@@ -13,12 +13,28 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet
     var tableView: UITableView!
     
-    var parks:[Park] = parkData
+    var parks:[Park] = [Park]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ParkCell")
+        do {
+            let parkDataURL = NSURL(string: "http://api.civicapps.org/parks/")
+            if let parkJSONData = NSData(contentsOfURL: parkDataURL!) {
+                let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
+                
+                if let parksArray = parkJSON["results"] as? [NSDictionary] {
+                    for item in parksArray {
+                        parks.append(Park(name: item["Property"] as? String))
+                    }
+                }
+            } else {
+                print("That did not work")
+            }
+        }
+        catch let JSONError as NSError {
+            print("\(JSONError)")
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
