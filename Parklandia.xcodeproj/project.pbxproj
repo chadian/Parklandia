@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650BF7371C61D817003EF2C5 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF7361C61D817003EF2C5 /* Park.swift */; };
+		650BF7391C61D875003EF2C5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF7381C61D875003EF2C5 /* SampleData.swift */; };
 		65F984D41C2E616B00C2CF60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F984D31C2E616B00C2CF60 /* AppDelegate.swift */; };
-		65F984D61C2E616B00C2CF60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F984D51C2E616B00C2CF60 /* ViewController.swift */; };
 		65F984D91C2E616B00C2CF60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F984D71C2E616B00C2CF60 /* Main.storyboard */; };
 		65F984DB1C2E616B00C2CF60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F984DA1C2E616B00C2CF60 /* Assets.xcassets */; };
 		65F984DE1C2E616B00C2CF60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F984DC1C2E616B00C2CF60 /* LaunchScreen.storyboard */; };
 		65F984E91C2E616B00C2CF60 /* ParklandiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F984E81C2E616B00C2CF60 /* ParklandiaTests.swift */; };
 		65F984F41C2E616B00C2CF60 /* ParklandiaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F984F31C2E616B00C2CF60 /* ParklandiaUITests.swift */; };
+		65F985021C2E64DF00C2CF60 /* ParksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F985011C2E64DF00C2CF60 /* ParksListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650BF7361C61D817003EF2C5 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Park.swift; path = ../Park.swift; sourceTree = "<group>"; };
+		650BF7381C61D875003EF2C5 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = ../SampleData.swift; sourceTree = "<group>"; };
 		65F984D01C2E616B00C2CF60 /* Parklandia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parklandia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F984D31C2E616B00C2CF60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65F984D51C2E616B00C2CF60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		65F984D81C2E616B00C2CF60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65F984DA1C2E616B00C2CF60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65F984DD1C2E616B00C2CF60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		65F984EF1C2E616B00C2CF60 /* ParklandiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParklandiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F984F31C2E616B00C2CF60 /* ParklandiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParklandiaUITests.swift; sourceTree = "<group>"; };
 		65F984F51C2E616B00C2CF60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65F985011C2E64DF00C2CF60 /* ParksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParksListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,10 @@
 		65F984D21C2E616B00C2CF60 /* Parklandia */ = {
 			isa = PBXGroup;
 			children = (
+				650BF7381C61D875003EF2C5 /* SampleData.swift */,
+				650BF7361C61D817003EF2C5 /* Park.swift */,
 				65F984D31C2E616B00C2CF60 /* AppDelegate.swift */,
-				65F984D51C2E616B00C2CF60 /* ViewController.swift */,
+				65F985011C2E64DF00C2CF60 /* ParksListViewController.swift */,
 				65F984D71C2E616B00C2CF60 /* Main.storyboard */,
 				65F984DA1C2E616B00C2CF60 /* Assets.xcassets */,
 				65F984DC1C2E616B00C2CF60 /* LaunchScreen.storyboard */,
@@ -256,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65F984D61C2E616B00C2CF60 /* ViewController.swift in Sources */,
+				65F985021C2E64DF00C2CF60 /* ParksListViewController.swift in Sources */,
+				650BF7371C61D817003EF2C5 /* Park.swift in Sources */,
 				65F984D41C2E616B00C2CF60 /* AppDelegate.swift in Sources */,
+				650BF7391C61D875003EF2C5 /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +490,7 @@
 				65F984FA1C2E616B00C2CF60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65F984FB1C2E616B00C2CF60 /* Build configuration list for PBXNativeTarget "ParklandiaTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				65F984FD1C2E616B00C2CF60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65F984FE1C2E616B00C2CF60 /* Build configuration list for PBXNativeTarget "ParklandiaUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +508,7 @@
 				65F985001C2E616B00C2CF60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
