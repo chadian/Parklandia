@@ -24,6 +24,7 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
                 let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
                 
                 if let parksArray = parkJSON["results"] as? [NSDictionary] {
+                    
                     for item in parksArray {
                         parks.append(Park(name: item["Property"] as? String))
                     }

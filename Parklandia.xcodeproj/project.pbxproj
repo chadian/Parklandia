@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		650BF7371C61D817003EF2C5 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF7361C61D817003EF2C5 /* Park.swift */; };
-		650BF7391C61D875003EF2C5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF7381C61D875003EF2C5 /* SampleData.swift */; };
 		65F984D41C2E616B00C2CF60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F984D31C2E616B00C2CF60 /* AppDelegate.swift */; };
 		65F984D91C2E616B00C2CF60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F984D71C2E616B00C2CF60 /* Main.storyboard */; };
 		65F984DB1C2E616B00C2CF60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F984DA1C2E616B00C2CF60 /* Assets.xcassets */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		650BF7361C61D817003EF2C5 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Park.swift; path = ../Park.swift; sourceTree = "<group>"; };
-		650BF7381C61D875003EF2C5 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = ../SampleData.swift; sourceTree = "<group>"; };
 		65F984D01C2E616B00C2CF60 /* Parklandia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parklandia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F984D31C2E616B00C2CF60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F984D81C2E616B00C2CF60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		65F984D21C2E616B00C2CF60 /* Parklandia */ = {
 			isa = PBXGroup;
 			children = (
-				650BF7381C61D875003EF2C5 /* SampleData.swift */,
 				650BF7361C61D817003EF2C5 /* Park.swift */,
 				65F984D31C2E616B00C2CF60 /* AppDelegate.swift */,
 				65F985011C2E64DF00C2CF60 /* ParksListViewController.swift */,
@@ -199,6 +196,7 @@
 				TargetAttributes = {
 					65F984CF1C2E616B00C2CF60 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = C2C666J776;
 					};
 					65F984E31C2E616B00C2CF60 = {
 						CreatedOnToolsVersion = 7.2;
@@ -265,7 +263,6 @@
 				65F985021C2E64DF00C2CF60 /* ParksListViewController.swift in Sources */,
 				650BF7371C61D817003EF2C5 /* Park.swift in Sources */,
 				65F984D41C2E616B00C2CF60 /* AppDelegate.swift in Sources */,
-				650BF7391C61D875003EF2C5 /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Parklandia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.mapleandpine.Parklandia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,10 +416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Parklandia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.mapleandpine.Parklandia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
