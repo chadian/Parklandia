@@ -10,9 +10,16 @@ import UIKit
 
 class ParksListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    /*
+
+        IBOutlet & IBAction
+
+    */
+
     @IBOutlet
     var tableView: UITableView!
-    
+
+    // data source
     var parks:[Park] = [Park]()
     
     override func viewDidLoad() {
@@ -23,12 +30,26 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
             if let parkJSONData = NSData(contentsOfURL: parkDataURL!) {
                 let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
                 
-                if let parksArray = parkJSON["results"] as? [NSDictionary] {
+                if let parksDictionary = parkJSON["results"] as? [NSDictionary] {
                     
-                    for item in parksArray {
-                        parks.append(Park(name: item["Property"] as? String))
+                    // create a Park from the json, add it to the parks array
+                    for item in parksDictionary {
+                        var parkName = item["Property"] as? String
+                        
+                        // clean up parkName, remove whitespace
+                        parkName = parkName?.stringByTrimmingCharactersInSet(
+                            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+                        )
+
+                        parks.append(Park(name: parkName))
+                    }
+                    
+                    // sort based on Park.name
+                    parks.sortInPlace { (park1, park2) -> Bool in
+                        return park1.name < park2.name
                     }
                 }
+
             } else {
                 print("That did not work")
             }
@@ -38,6 +59,11 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    /*
+
+        UITableView Protocols
+    
+    */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -54,13 +80,6 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.textLabel?.text = park.name
         return cell
     }
-
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("ParkCell")! as UITableViewCell
-//        cell.textLabel?.text = "Some Portland Park"//self.parks[indexPath.row].name
-//        
-//        return cell
-//    }
     
     /*
     // MARK: - Navigation
