@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import MapKit
+
+var test:MKMapView?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

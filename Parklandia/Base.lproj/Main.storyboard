@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VKj-jQ-7Xv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VKj-jQ-7Xv">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -48,8 +49,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-Wy-XeB">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-Wy-XeB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="r2g-Gs-hAd"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="r2g-Gs-hAd"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="embed" id="Z0J-vY-IWt"/>
                                 </connections>
@@ -57,8 +66,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="width" secondItem="8aD-Yz-ChM" secondAttribute="width" id="wKi-GT-dDi"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leadingMargin" constant="20" id="4mf-AY-lUr"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="IdY-Ca-4xU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fX9-Wy-XeB" secondAttribute="trailing" constant="20" id="N6l-AU-7oS"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="bottom" secondItem="8aD-Yz-ChM" secondAttribute="bottomMargin" id="bha-7C-EBw"/>
+                            <constraint firstItem="zUU-dQ-kl4" firstAttribute="top" secondItem="fX9-Wy-XeB" secondAttribute="bottom" id="cwB-C4-pDm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fX9-Wy-XeB" secondAttribute="trailing" constant="-20" id="iJu-lk-ead"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="centerX" secondItem="8aD-Yz-ChM" secondAttribute="centerX" id="nnd-z1-8TB"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leadingMargin" constant="-20" id="pYD-dC-stm"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="qb7-dV-KnG"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="centerX" secondItem="8aD-Yz-ChM" secondAttribute="centerX" id="uOt-4h-eDk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4mf-AY-lUr"/>
+                                <exclude reference="N6l-AU-7oS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="k2c-AA-TX4">
                         <nil key="title"/>
@@ -95,19 +119,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-2c-dFT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-2c-dFT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ParkCell" textLabel="mdc-oQ-HlL" style="IBUITableViewCellStyleDefault" id="Asn-Ol-JQo">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Asn-Ol-JQo" id="jvn-F7-73T">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdc-oQ-HlL">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="49.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="47.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="651.5" y="424.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Parks Map View Controller-->
         <scene sceneID="WFQ-Qd-dSN">
             <objects>
-                <viewController storyboardIdentifier="parkMapView" id="RPp-W6-Vav" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="parkMapView" id="RPp-W6-Vav" customClass="ParksMapViewController" customModule="Parklandia" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BfP-X8-3DA"/>
                         <viewControllerLayoutGuide type="bottom" id="kuk-rr-GjU"/>
