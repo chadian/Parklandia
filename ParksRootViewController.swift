@@ -35,6 +35,12 @@ class ParksRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let vc:UIViewController = storyboard?.instantiateViewControllerWithIdentifier(viewControllerIdentifiers[0]) {
+            self.addChildViewController(vc)
+            vc.view.frame = CGRectMake(0, 0, self.containerView.frame.size.width, self.containerView.frame.size.height);
+            self.containerView.addSubview(vc.view)
+            vc.didMoveToParentViewController(self)
+        }
         // Do any additional setup after loading the view.
     }
 
