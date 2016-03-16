@@ -1,29 +1,20 @@
 //
-//  ParksMapViewController.swift
+//  ParksDetailViewController.swift
 //  Parklandia
 //
-//  Created by Chad Carbert on 2016-03-01.
+//  Created by Chad Carbert on 2016-03-10.
 //  Copyright © 2016 Maple + Pine. All rights reserved.
 //
 
 import UIKit
-import MapKit
 
-class ParksMapViewController: UIViewController {
+class ParksDetailViewController: UIViewController {
 
-    @IBOutlet
-    var mapView:MKMapView!;
+    var park:Park!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let portlandLocation = CLLocationCoordinate2D(latitude: 45.52, longitude: -122.681944)
-        let portlandSpan = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
-        let portlandRegion:MKCoordinateRegion = MKCoordinateRegion(center: portlandLocation, span: portlandSpan)
-        
-        mapView.setRegion(portlandRegion, animated: true)
-//        mapView.setCenterCoordinate(portlandLocation, animated: true)
-        
+        self.title = park.name
     }
 
     override func didReceiveMemoryWarning() {

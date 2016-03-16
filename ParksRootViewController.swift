@@ -17,31 +17,50 @@ class ParksRootViewController: UIViewController {
     @IBOutlet
     var segmentedControl:UISegmentedControl!
     
-    var viewControllerIdentifiers = ["parkListView", "parkMapView"];
+    var parks:[Park] = [Park]()
     
     @IBAction func segmentedControlAction(sender: UISegmentedControl!) {
-        
         let segmentIndex = sender.selectedSegmentIndex;
-
-        if let vc:UIViewController = storyboard?.instantiateViewControllerWithIdentifier(viewControllerIdentifiers[segmentIndex]) {
-            self.addChildViewController(vc)
-            vc.view.frame = CGRectMake(0, 0, self.containerView.frame.size.width, self.containerView.frame.size.height);
-            self.containerView.addSubview(vc.view)
-            vc.didMoveToParentViewController(self)
-        }
+        self.transitionToSegmentViewByIndex(segmentIndex);
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let vc:UIViewController = storyboard?.instantiateViewControllerWithIdentifier(viewControllerIdentifiers[0]) {
-            self.addChildViewController(vc)
-            vc.view.frame = CGRectMake(0, 0, self.containerView.frame.size.width, self.containerView.frame.size.height);
-            self.containerView.addSubview(vc.view)
-            vc.didMoveToParentViewController(self)
+        do {
+            let parkDataURL = NSURL(string: "http://api.civicapps.org/parks/")
+            if let parkJSONData = NSData(contentsOfURL: parkDataURL!) {
+                let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
+                
+                if let parksDictionary = parkJSON["results"] as? [NSDictionary] {
+                    
+                    // create a Park from the json, add it to the parks array
+                    for item in parksDictionary {
+                        var parkName = item["Property"] as? String
+                        
+                        // clean up parkName, remove whitespace
+                        parkName = parkName?.stringByTrimmingCharactersInSet(
+                            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+                        )
+                        
+                        parks.append(Park(name: parkName))
+                    }
+                    
+                    // sort based on Park.name
+                    parks.sortInPlace { (park1, park2) -> Bool in
+                        return park1.name < park2.name
+                    }
+                }
+                
+            } else {
+                print("That did not work")
+            }
         }
-        // Do any additional setup after loading the view.
+        catch let JSONError as NSError {
+            print("\(JSONError)")
+        }
+        
+        self.transitionToSegmentViewByIndex(0);
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +68,29 @@ class ParksRootViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func transitionToSegmentViewByIndex(index: Int) -> UIViewController? {
+        var viewControllerIdentifiers = ["parkListView", "parkMapView"];
+        
+        if let vc:UIViewController = storyboard?.instantiateViewControllerWithIdentifier(viewControllerIdentifiers[index]) {
+            
+            if index == 0 {
+                if let vc = vc as? ParksListViewController {
+                    vc.parks = self.parks
+                }
 
+            }
+            
+            self.addChildViewController(vc)
+            vc.view.frame = CGRectMake(0, 0, self.containerView.frame.size.width, self.containerView.frame.size.height);
+            self.containerView.addSubview(vc.view)
+            vc.didMoveToParentViewController(self)
+            
+            return vc;
+        }
+        
+        return nil;
+    }
+    
     /*
     // MARK: - Navigation
 

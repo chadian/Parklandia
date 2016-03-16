@@ -18,45 +18,23 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet
     var tableView: UITableView!
-
+    
     // data source
-    var parks:[Park] = [Park]()
+    var parks:[Park]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "parkDetailSegue" {
+            let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
+            let selectedPark:Park? = self.parks[self.tableView.indexPathForSelectedRow!.row]
+            
+            parkDetailVC.park = selectedPark;
+        }
         
-        do {
-            let parkDataURL = NSURL(string: "http://api.civicapps.org/parks/")
-            if let parkJSONData = NSData(contentsOfURL: parkDataURL!) {
-                let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
-                
-                if let parksDictionary = parkJSON["results"] as? [NSDictionary] {
-                    
-                    // create a Park from the json, add it to the parks array
-                    for item in parksDictionary {
-                        var parkName = item["Property"] as? String
-                        
-                        // clean up parkName, remove whitespace
-                        parkName = parkName?.stringByTrimmingCharactersInSet(
-                            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-                        )
-
-                        parks.append(Park(name: parkName))
-                    }
-                    
-                    // sort based on Park.name
-                    parks.sortInPlace { (park1, park2) -> Bool in
-                        return park1.name < park2.name
-                    }
-                }
-
-            } else {
-                print("That did not work")
-            }
-        }
-        catch let JSONError as NSError {
-            print("\(JSONError)")
-        }
+        super.prepareForSegue(segue, sender: sender);
     }
     
     /*
@@ -78,8 +56,13 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("ParkCell", forIndexPath: indexPath)
         let park = parks[indexPath.row] as Park
         cell.textLabel?.text = park.name
+            
         return cell
     }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        performSegueWithIdentifier("parkDetailSegue", sender: tableView.cellForRowAtIndexPath(indexPath));
+//    }
     
     /*
     // MARK: - Navigation

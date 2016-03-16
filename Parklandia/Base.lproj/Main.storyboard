@@ -64,14 +64,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leadingMargin" constant="20" id="4mf-AY-lUr"/>
-                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="IdY-Ca-4xU"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="IJP-cL-LXl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fX9-Wy-XeB" secondAttribute="trailing" constant="20" id="N6l-AU-7oS"/>
+                            <constraint firstItem="zUU-dQ-kl4" firstAttribute="top" secondItem="fX9-Wy-XeB" secondAttribute="bottom" id="PwU-Bw-hux"/>
                             <constraint firstItem="fX9-Wy-XeB" firstAttribute="bottom" secondItem="8aD-Yz-ChM" secondAttribute="bottomMargin" id="bha-7C-EBw"/>
-                            <constraint firstItem="zUU-dQ-kl4" firstAttribute="top" secondItem="fX9-Wy-XeB" secondAttribute="bottom" id="cwB-C4-pDm"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="dY4-4H-SQN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fX9-Wy-XeB" secondAttribute="trailing" constant="-20" id="iJu-lk-ead"/>
                             <constraint firstItem="fX9-Wy-XeB" firstAttribute="centerX" secondItem="8aD-Yz-ChM" secondAttribute="centerX" id="nnd-z1-8TB"/>
                             <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leadingMargin" constant="-20" id="pYD-dC-stm"/>
-                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="qb7-dV-KnG"/>
                             <constraint firstItem="fX9-Wy-XeB" firstAttribute="centerX" secondItem="8aD-Yz-ChM" secondAttribute="centerX" id="uOt-4h-eDk"/>
                         </constraints>
                         <variation key="default">
@@ -136,6 +136,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="yvo-xD-Q3u" kind="show" identifier="parkDetailSegue" id="5cl-bR-tHT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -154,10 +157,32 @@
                     </view>
                     <navigationItem key="navigationItem" id="b1D-V9-kQH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="PeF-2c-dFT" id="jll-wq-fez"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="651.5" y="424.5"/>
+        </scene>
+        <!--Parks Detail View Controller-->
+        <scene sceneID="Jpo-tx-T3B">
+            <objects>
+                <viewController id="yvo-xD-Q3u" customClass="ParksDetailViewController" customModule="Parklandia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8y9-af-4IP"/>
+                        <viewControllerLayoutGuide type="bottom" id="lBS-61-UK0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DG2-Ts-5x9" customClass="Park">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkN-DA-VHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1170.5" y="424.5"/>
         </scene>
         <!--Parks Map View Controller-->
         <scene sceneID="WFQ-Qd-dSN">
@@ -168,23 +193,25 @@
                         <viewControllerLayoutGuide type="bottom" id="kuk-rr-GjU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Rj-fS-hCJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pYO-ra-a6g">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ovw-JZ-IG8"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mapView" destination="pYO-ra-a6g" id="mp9-jQ-L69"/>
                         <outlet property="view" destination="1Rj-fS-hCJ" id="UxZ-cO-agQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPU-Zm-BQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="1128"/>
+            <point key="canvasLocation" x="651.5" y="1213.5"/>
         </scene>
     </scenes>
 </document>
