@@ -163,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651.5" y="424.5"/>
+            <point key="canvasLocation" x="651.5" y="54.5"/>
         </scene>
         <!--Parks Detail View Controller-->
         <scene sceneID="Jpo-tx-T3B">
@@ -196,22 +196,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pYO-ra-a6g">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VMz-bx-tXc">
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="667"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pYO-ra-a6g">
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="667"/>
+                                    </mapView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VMz-bx-tXc" firstAttribute="leading" secondItem="1Rj-fS-hCJ" secondAttribute="leadingMargin" constant="-20" id="XD2-hH-mNf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VMz-bx-tXc" secondAttribute="trailing" constant="-20" id="eDi-Mn-tmG"/>
+                            <constraint firstItem="VMz-bx-tXc" firstAttribute="top" secondItem="1Rj-fS-hCJ" secondAttribute="topMargin" id="iRa-UG-b1e"/>
+                            <constraint firstItem="kuk-rr-GjU" firstAttribute="top" secondItem="VMz-bx-tXc" secondAttribute="bottom" id="qpP-xg-T30"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ovw-JZ-IG8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="pYO-ra-a6g" id="mp9-jQ-L69"/>
                         <outlet property="view" destination="1Rj-fS-hCJ" id="UxZ-cO-agQ"/>
+                        <segue destination="yvo-xD-Q3u" kind="showDetail" identifier="parkDetailSegue" id="mRd-t2-zHN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPU-Zm-BQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651.5" y="1213.5"/>
+            <point key="canvasLocation" x="651.5" y="785.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mRd-t2-zHN"/>
+    </inferredMetricsTieBreakers>
 </document>

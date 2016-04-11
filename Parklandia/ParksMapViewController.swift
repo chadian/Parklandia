@@ -12,7 +12,20 @@ import MapKit
 class ParksMapViewController: UIViewController {
 
     @IBOutlet
-    var mapView:MKMapView!;
+    var mapView:MKMapView!
+
+    var parks:[Park]!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "parkDetailSegue" {
+//            let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
+//            let selectedPark:Park? = self.parks[self.tableView.indexPathForSelectedRow!.row]
+//            
+//            parkDetailVC.park = selectedPark;
+        }
+        
+        super.prepareForSegue(segue, sender: sender);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +35,13 @@ class ParksMapViewController: UIViewController {
         let portlandRegion:MKCoordinateRegion = MKCoordinateRegion(center: portlandLocation, span: portlandSpan)
         
         mapView.setRegion(portlandRegion, animated: true)
-//        mapView.setCenterCoordinate(portlandLocation, animated: true)
         
+        let annotations:[MKPointAnnotation] = parks.map({ (park:Park) -> ParkMapPointAnnotation in
+            return ParkMapPointAnnotation(park: park)
+        })
+        
+        self.mapView.rotateEnabled = false;
+        self.mapView.addAnnotations(annotations)
     }
 
     override func didReceiveMemoryWarning() {

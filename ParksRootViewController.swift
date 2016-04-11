@@ -37,13 +37,19 @@ class ParksRootViewController: UIViewController {
                     // create a Park from the json, add it to the parks array
                     for item in parksDictionary {
                         var parkName = item["Property"] as? String
+                        let parkLong:Double = item["loc"]!["lon"] as! Double
+                        let parkLat:Double = item["loc"]!["lat"] as! Double
                         
                         // clean up parkName, remove whitespace
                         parkName = parkName?.stringByTrimmingCharactersInSet(
                             NSCharacterSet.whitespaceAndNewlineCharacterSet()
                         )
                         
-                        parks.append(Park(name: parkName))
+                        parks.append(Park(
+                            name: parkName,
+                            long: parkLong,
+                            lat: parkLat
+                        ))
                     }
                     
                     // sort based on Park.name
@@ -78,6 +84,13 @@ class ParksRootViewController: UIViewController {
                     vc.parks = self.parks
                 }
 
+            }
+            
+            if index == 1 {
+                if let vc = vc as? ParksMapViewController {
+                    vc.parks = self.parks
+                }
+                
             }
             
             self.addChildViewController(vc)

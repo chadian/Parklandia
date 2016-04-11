@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650484C11CB0D1DC00B77870 /* ParkMapPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650484C01CB0D1DC00B77870 /* ParkMapPointAnnotation.swift */; };
 		650BF7371C61D817003EF2C5 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF7361C61D817003EF2C5 /* Park.swift */; };
 		6550A98D1C928F260026160D /* ParksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A98C1C928F260026160D /* ParksDetailViewController.swift */; };
 		658B23A71C7A633B00622487 /* ParksRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B23A61C7A633B00622487 /* ParksRootViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650484C01CB0D1DC00B77870 /* ParkMapPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkMapPointAnnotation.swift; sourceTree = "<group>"; };
 		650BF7361C61D817003EF2C5 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		6550A98C1C928F260026160D /* ParksDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParksDetailViewController.swift; sourceTree = "<group>"; };
 		658B23A61C7A633B00622487 /* ParksRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParksRootViewController.swift; path = ../ParksRootViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				65F984D71C2E616B00C2CF60 /* Main.storyboard */,
 				6550A98C1C928F260026160D /* ParksDetailViewController.swift */,
 				65E8709A1C86BFA600098E11 /* ParksMapViewController.swift */,
+				650484C01CB0D1DC00B77870 /* ParkMapPointAnnotation.swift */,
 				65FD9EB41C6A39C500D6A1CB /* ParksNavigationController.swift */,
 				65F984DA1C2E616B00C2CF60 /* Assets.xcassets */,
 				65F984DC1C2E616B00C2CF60 /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650484C11CB0D1DC00B77870 /* ParkMapPointAnnotation.swift in Sources */,
 				65F985021C2E64DF00C2CF60 /* ParksListViewController.swift in Sources */,
 				6550A98D1C928F260026160D /* ParksDetailViewController.swift in Sources */,
 				650BF7371C61D817003EF2C5 /* Park.swift in Sources */,
