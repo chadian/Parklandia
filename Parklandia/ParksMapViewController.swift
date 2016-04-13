@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ParksMapViewController: UIViewController {
+class ParksMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet
     var mapView:MKMapView!
@@ -17,16 +17,16 @@ class ParksMapViewController: UIViewController {
     var parks:[Park]!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "parkDetailSegue" {
-//            let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
-//            let selectedPark:Park? = self.parks[self.tableView.indexPathForSelectedRow!.row]
-//            
-//            parkDetailVC.park = selectedPark;
+        if segue.identifier == "parkDetailSegueAgain", let pkMapAnnotation = sender!.annotation as? ParkMapPointAnnotation {
+            let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
+            let selectedPark:Park = pkMapAnnotation.park
+            
+            parkDetailVC.park = selectedPark;
         }
         
         super.prepareForSegue(segue, sender: sender);
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,30 +34,31 @@ class ParksMapViewController: UIViewController {
         let portlandSpan = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
         let portlandRegion:MKCoordinateRegion = MKCoordinateRegion(center: portlandLocation, span: portlandSpan)
         
-        mapView.setRegion(portlandRegion, animated: true)
+        self.mapView.setRegion(portlandRegion, animated: true)
         
         let annotations:[MKPointAnnotation] = parks.map({ (park:Park) -> ParkMapPointAnnotation in
             return ParkMapPointAnnotation(park: park)
         })
         
-        self.mapView.rotateEnabled = false;
+        self.mapView.rotateEnabled = false
         self.mapView.addAnnotations(annotations)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.mapView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        // @TODO replace with dequeueReusableAnnotationViewWithIdentifier
+        // better performance by reusing an AnnotationView
+        let annotationView = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
+        
+        annotationView.pinTintColor = MKPinAnnotationView.greenPinColor()
+        annotationView.enabled = true
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+        
+        return annotationView
     }
-    */
-
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        self.performSegueWithIdentifier("parkDetailSegueAgain", sender: view)
+    }
 }

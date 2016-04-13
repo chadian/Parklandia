@@ -17,6 +17,7 @@ class ParkMapPointAnnotation: MKPointAnnotation {
         super.init()
 
         self.park = park;
+        self.title = park.name
         
         if let coordinate:CLLocationCoordinate2D = park.coord  {
             self.coordinate = coordinate
