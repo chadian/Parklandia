@@ -49,8 +49,7 @@ class ParksMapViewController: UIViewController, MKMapViewDelegate {
         // @TODO replace with dequeueReusableAnnotationViewWithIdentifier
         // better performance by reusing an AnnotationView
         let annotationView = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
-        
-        annotationView.pinTintColor = MKPinAnnotationView.greenPinColor()
+        annotationView.pinTintColor = UIColor.init(red: 0.133, green: 0.545, blue: 0.133, alpha: 1)
         annotationView.enabled = true
         annotationView.canShowCallout = true
         annotationView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
