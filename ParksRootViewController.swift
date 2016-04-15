@@ -39,6 +39,11 @@ class ParksRootViewController: UIViewController {
                         var parkName = item["Property"] as? String
                         let parkLong:Double = item["loc"]!["lon"] as! Double
                         let parkLat:Double = item["loc"]!["lat"] as! Double
+                        let ownedAcres:Double? = Double(item["OwnedAcres"] as! String)
+                        let unownedAcres:Double? = Double(item["UnownedAcres"] as! String)
+                        let yearAcquired:String = item["YearAcquired"] as! String
+                        let amenities:Array? = item["amenities"] as? [String]
+                        
                         
                         // clean up parkName, remove whitespace
                         parkName = parkName?.stringByTrimmingCharactersInSet(
@@ -46,9 +51,14 @@ class ParksRootViewController: UIViewController {
                         )
                         
                         parks.append(Park(
-                            name: parkName,
+                            name: parkName!,
                             long: parkLong,
-                            lat: parkLat
+                            lat: parkLat,
+                            ownedAcres: ownedAcres,
+                            unownedAcres: unownedAcres,
+                            yearAcquired: yearAcquired,
+                            amenities: amenities
+                            
                         ))
                     }
                     
@@ -103,15 +113,4 @@ class ParksRootViewController: UIViewController {
         
         return nil;
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

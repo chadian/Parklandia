@@ -42,13 +42,25 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         UITableView Protocols
     
     */
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return self.uniqueStartingCharacters().count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parks.count
+    func tableView(tableView:UITableView, titleForHeaderInSection section: Int) -> String? {
+        return String(self.uniqueStartingCharacters()[section])
     }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionChar = self.uniqueStartingCharacters()[section]
+        let filtered = parks.filter { (park) -> Bool in
+            return sectionChar == park.name![park.name!.startIndex]
+        }
+        
+        return filtered.count
+    }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
@@ -58,6 +70,18 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.textLabel?.text = park.name
             
         return cell
+    }
+    
+    internal func uniqueStartingCharacters() -> [Character] {
+        var uniqueStarting = Set<Character>()
+        self.parks.forEach { (park:Park) in
+            let firstChar:Character = park.name![park.name!.startIndex]
+            if !uniqueStarting.contains(firstChar) {
+                uniqueStarting.insert(firstChar)
+            }
+        }
+        
+        return uniqueStarting.sort()
     }
 
 }
