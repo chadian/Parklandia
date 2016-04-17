@@ -28,13 +28,14 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "parkDetailSegue" {
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let park = parkByIndexPath(indexPath)
             let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
-            let selectedPark:Park? = self.parks[self.tableView.indexPathForSelectedRow!.row]
             
-            parkDetailVC.park = selectedPark;
+            parkDetailVC.park = park
         }
         
-        super.prepareForSegue(segue, sender: sender);
+        super.prepareForSegue(segue, sender: sender)
     }
     
     /*
@@ -51,7 +52,6 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
         return String(self.uniqueStartingCharacters()[section])
     }
     
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionChar = self.uniqueStartingCharacters()[section]
         let filtered = parks.filter { (park) -> Bool in
@@ -64,12 +64,31 @@ class ParksListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
-            
+    
         let cell = tableView.dequeueReusableCellWithIdentifier("ParkCell", forIndexPath: indexPath)
-        let park = parks[indexPath.row] as Park
+        let park = parkByIndexPath(indexPath)
         cell.textLabel?.text = park.name
             
         return cell
+    }
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return self.uniqueStartingCharacters()
+            .map({ (char) -> String in
+                return String(char)
+            })
+    }
+
+    
+    internal func parkByIndexPath(indexPath: NSIndexPath) -> Park {
+        let sectionChar = uniqueStartingCharacters()[indexPath.section]
+        let row = indexPath.row
+        
+        let filtered = parks.filter { (park) -> Bool in
+            return sectionChar == park.name![park.name!.startIndex]
+        }
+        
+        return filtered[row]
     }
     
     internal func uniqueStartingCharacters() -> [Character] {

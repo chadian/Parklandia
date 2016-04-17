@@ -52,7 +52,11 @@ class ParksMapViewController: UIViewController, MKMapViewDelegate {
         annotationView.pinTintColor = UIColor.init(red: 0.133, green: 0.545, blue: 0.133, alpha: 1)
         annotationView.enabled = true
         annotationView.canShowCallout = true
-        annotationView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+        
+        // setup accessory buttion
+        let accessoryButton = UIButton(type: UIButtonType.DetailDisclosure)
+        accessoryButton.tintColor = UIColor.init(red: 0.133, green: 0.545, blue: 0.133, alpha: 1)
+        annotationView.rightCalloutAccessoryView = accessoryButton
         
         return annotationView
     }
