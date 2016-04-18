@@ -10,7 +10,7 @@
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" id="VKj-jQ-7Xv" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLs-bU-qiS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sLs-bU-qiS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,19 +49,19 @@
                         <viewControllerLayoutGuide type="bottom" id="zUU-dQ-kl4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8aD-Yz-ChM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-Wy-XeB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fX9-Wy-XeB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zUU-dQ-kl4" firstAttribute="top" secondItem="fX9-Wy-XeB" secondAttribute="bottom" id="RDM-63-rEU"/>
-                            <constraint firstAttribute="trailing" secondItem="fX9-Wy-XeB" secondAttribute="trailing" id="dHL-1q-fVB"/>
-                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leading" id="hkN-ed-jxW"/>
-                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="w7g-4M-Dm0"/>
+                            <constraint firstAttribute="trailing" secondItem="fX9-Wy-XeB" secondAttribute="trailing" id="4E2-FZ-UBB"/>
+                            <constraint firstItem="zUU-dQ-kl4" firstAttribute="top" secondItem="fX9-Wy-XeB" secondAttribute="bottom" id="T2M-hU-y2P"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="leading" secondItem="8aD-Yz-ChM" secondAttribute="leading" id="x2Z-5H-U10"/>
+                            <constraint firstItem="fX9-Wy-XeB" firstAttribute="top" secondItem="hEp-eM-1qn" secondAttribute="bottom" id="zou-9Q-GAB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k2c-AA-TX4">
@@ -163,13 +163,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year Acquired" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRQ-LB-RVv">
-                                <rect key="frame" x="20" y="43" width="107" height="21"/>
+                                <rect key="frame" x="20" y="28" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0v0-jB-Lre">
-                                <rect key="frame" x="290" y="43" width="41" height="21"/>
+                                <rect key="frame" x="286" y="28" width="41" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -223,7 +223,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VK7-Wr-d5L"/>
+        <segue reference="5cl-bR-tHT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
