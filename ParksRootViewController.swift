@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapKit
+import Alamofire
 
 class ParksRootViewController: UIViewController {
 
@@ -27,56 +27,50 @@ class ParksRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        do {
-            let parkDataURL = NSURL(string: "http://api.civicapps.org/parks/")
-            if let parkJSONData = NSData(contentsOfURL: parkDataURL!) {
-                let parkJSON = try NSJSONSerialization.JSONObjectWithData(parkJSONData, options: [])
-                
-                if let parksDictionary = parkJSON["results"] as? [NSDictionary] {
-                    
-                    // create a Park from the json, add it to the parks array
-                    for item in parksDictionary {
-                        var parkName = item["Property"] as? String
-                        let parkLong:Double = item["loc"]!["lon"] as! Double
-                        let parkLat:Double = item["loc"]!["lat"] as! Double
-                        let ownedAcres:Double? = Double(item["OwnedAcres"] as! String)
-                        let unownedAcres:Double? = Double(item["UnownedAcres"] as! String)
-                        let yearAcquired:String = item["YearAcquired"] as! String
-                        let amenities:Array? = item["amenities"] as? [String]
-                        
-                        
-                        // clean up parkName, remove whitespace
-                        parkName = parkName?.stringByTrimmingCharactersInSet(
-                            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-                        )
-                        
-                        parks.append(Park(
-                            name: parkName!,
-                            long: parkLong,
-                            lat: parkLat,
-                            ownedAcres: ownedAcres,
-                            unownedAcres: unownedAcres,
-                            yearAcquired: yearAcquired,
-                            amenities: amenities
-                            
-                        ))
-                    }
-                    
-                    // sort based on Park.name
-                    parks.sortInPlace { (park1, park2) -> Bool in
-                        return park1.name < park2.name
-                    }
+        Alamofire.request(.GET, "http://api.civicapps.org/parks")
+            .responseJSON { response in
+                guard response.result.isSuccess else {
+                    print("Unable to get data")
+                    return
                 }
                 
-            } else {
-                print("That did not work")
-            }
+                guard let parks = response.result.value!["results"] as? [AnyObject] else {
+                    print("Results root not found")
+                    return
+                }
+                
+                for park in parks {
+                    var parkName = park["Property"] as? String
+                    // clean up parkName, remove whitespace
+                    parkName = parkName?.stringByTrimmingCharactersInSet(
+                        NSCharacterSet.whitespaceAndNewlineCharacterSet()
+                    )
+                    
+                    
+                    let parkLong:Double = park["loc"]!!["lon"] as! Double
+                    let parkLat:Double = park["loc"]!!["lat"] as! Double
+                    let ownedAcres:Double? = Double(park["OwnedAcres"] as! String)
+                    let unownedAcres:Double? = Double(park["UnownedAcres"] as! String)
+                    let yearAcquired:String = park["YearAcquired"] as! String
+                    let amenities:Array? = park["amenities"] as? [String]
+
+                    self.parks.append(Park(
+                        name: parkName!,
+                        long: parkLong,
+                        lat: parkLat,
+                        ownedAcres: ownedAcres,
+                        unownedAcres: unownedAcres,
+                        yearAcquired: yearAcquired,
+                        amenities: amenities
+                    ))
+                }
+                
+                self.parks.sortInPlace { (park1, park2) -> Bool in
+                    return park1.name < park2.name
+                }
+                
+                self.transitionToSegmentViewByIndex(0);
         }
-        catch let JSONError as NSError {
-            print("\(JSONError)")
-        }
-        
-        self.transitionToSegmentViewByIndex(0);
     }
 
     override func didReceiveMemoryWarning() {
