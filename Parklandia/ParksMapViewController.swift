@@ -21,10 +21,10 @@ class ParksMapViewController: UIViewController, MKMapViewDelegate {
             let parkDetailVC = segue.destinationViewController as! ParksDetailViewController
             let selectedPark:Park = pkMapAnnotation.park
             
-            parkDetailVC.park = selectedPark;
+            parkDetailVC.park = selectedPark
         }
         
-        super.prepareForSegue(segue, sender: sender);
+        super.prepareForSegue(segue, sender: sender)
     }
 
     override func viewDidLoad() {
@@ -46,14 +46,17 @@ class ParksMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        // @TODO replace with dequeueReusableAnnotationViewWithIdentifier
-        // better performance by reusing an AnnotationView
-        let annotationView = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
+        let reuseIdentifier = "ParkAnnotation"
+        
+        
+        let annotationView:MKPinAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier) as? MKPinAnnotationView ??
+                                                 MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        
         annotationView.pinTintColor = UIColor.init(red: 0.133, green: 0.545, blue: 0.133, alpha: 1)
         annotationView.enabled = true
         annotationView.canShowCallout = true
-        
-        // setup accessory buttion
+
+        // add accessory buttion
         let accessoryButton = UIButton(type: UIButtonType.DetailDisclosure)
         accessoryButton.tintColor = UIColor.init(red: 0.133, green: 0.545, blue: 0.133, alpha: 1)
         annotationView.rightCalloutAccessoryView = accessoryButton
